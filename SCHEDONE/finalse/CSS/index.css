@@ -1,0 +1,219 @@
+/* Set the font family, background image, and basic styling for the body */
+body {
+    font-family: 'Raleway', sans-serif;
+    background-image: url("../Images/black.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+ /* Styling for the header */
+.header {
+  padding: 10px 0;
+  background-color: orange;
+}
+
+/* Styling for the navigation links in the header */
+.header .navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for individual navigation items in the header */
+.header .nav-item {
+  margin-left: 20px;
+}
+
+/* Adjust styling for the common properties of navigation links in the header */
+.header .nav-link {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Adjust styling for navigation links in the header when hovered over */
+.header .nav-link:hover {
+  background-color: orange;
+}
+
+/* Adjust styling for the last navigation item in the header */
+.header .nav-item:last-child {
+  margin-right: 20px;
+}
+
+/* Styling for navigation links with href attribute "signup.php" */
+.nav-link[href="../finalse/HTML/signup.html"] {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff9900;
+}
+
+/* Styling for navigation links with href attribute "../HTML/login.html" */
+.nav-link[href="../finalse/HTML/login.html"] {
+  font-size: 18px; 
+  font-weight: bold;
+  color: #ff9900;
+}
+
+/* Styling for the welcome container section */
+.welcome-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Styling for the main heading in the welcome container */
+.welcome-container h1 {
+    color: orange;
+    font-size: 48px;
+    margin: 40px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling for paragraphs in the welcome container */
+.welcome-container p {
+    font-size: 20px;
+    color: #fdfdfd;
+     margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling for the carousel container */
+.carousel-container {
+    margin-top: 40px;
+}
+
+/* Styling for individual carousel items */
+.carousel-item {
+    height: auto;
+    background-color: orange;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling for images within the carousel items */
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Styling for the carousel control buttons */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+    opacity: 0.7;
+}
+
+/* Styling for carousel control buttons when hovered over */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+/* Styling for the carousel indicators */
+.carousel-indicators {
+    bottom: 10px;
+}
+
+/* Styling for individual carousel indicators */
+.carousel-indicators li {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Styling for the active carousel indicator */
+.carousel-indicators li.active {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Styling for the feature container section */
+.feature-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 50px auto;
+  }
+
+/* Styling for individual feature items within the feature container */
+  .feature-item {
+    flex-basis: calc(33.33% - 20px); 
+    padding: 20px;
+    text-align: center;
+    background-color: orange;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(253, 253, 253, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; 
+  }
+
+/* Styling for feature items when hovered over */
+  .feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+/* Styling for the heading within feature items */
+  .feature-item h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: rgb(82, 46, 1);
+    transition: color 0.3s ease; 
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+/* Styling for paragraphs within feature items */
+  .feature-item p {
+    font-size: 16px;
+    color: #000000;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+/* Styling for a background overlay on feature items when hovered over */
+  .feature-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #131D28;
+    border-radius: 8px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Show the overlay when hovering over the feature item */
+  .feature-item:hover::before {
+    opacity: 1;
+  }
+
+  /* Change the color of h2 (heading) when hovering over the feature item */
+  .feature-item:hover h2 {
+    color: #ff9900; 
+  }
+
+  /* Change the color of p (paragraph) when hovering over the feature item */
+  .feature-item:hover p {
+    color: #ffffff; 
+  }
+

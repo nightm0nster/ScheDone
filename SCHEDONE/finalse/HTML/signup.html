@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set character set and viewport for responsiveness -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the webpage -->
+    <title>ScheDone - Sign Up Page</title>
+    <!-- Add Favicon -->
+    <link rel="icon" href="../Images/1.png" type="image/png">
+    <!-- Link to custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="../CSS/signup.css">
+</head>
+
+<body>
+    <!-- Back to Home button -->
+    <div class="back-button">
+        <a href="../index.html">&#9666; BACK TO HOME</a>
+    </div>
+
+    <div class="container">
+        <!-- Content for the left column -->
+        <div class="left-column">
+            <img src="../Images/task.png" alt="Task">
+        </div>
+
+        <!-- Content for the right column -->
+        <div class="right-column">
+            <!-- Title for the sign-up section -->
+            <h1>SIGN UP</h1>
+            <!-- Signup form with user input fields -->
+            <form method="post" action="javascript:void(0);" onsubmit="handleSignupForm()">
+                <div class="form-group">
+
+                    <!-- Input field for the user's name -->
+                    <input type="text" id="name" name="name" placeholder="Name" required>
+                </div>
+
+                <!-- Input field for the user's email -->
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+
+                <!-- Input field for the user's contact number -->
+                <div class="form-group">
+                    <input type="text" id="contact" name="contact" placeholder="Contact Number" required>
+                </div>
+
+                <!-- Input field for the user's username -->
+                <div class="form-group">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+
+                <!-- Input field for the user's password -->
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+
+                <!-- Checkbox for agreeing to terms and conditions -->
+                <div class="agreeTerms">
+                    <input type="checkbox" id="agree" name="agree">
+                    <!-- Link to terms and conditions and privacy statement -->
+                    <label for="agree">I agree to the <a href="terms.html">Terms & Conditions</a> and <a
+                            href="privacy.html">Privacy Policy</a></label>
+                </div>
+
+                <!-- Submit button for the sign-up form -->
+                <div class="form-group">
+                    <input type="submit" value="Sign Up">
+                </div>
+            </form>
+
+            <!-- Link to login page for existing users -->
+            <div class="login-link">
+                <p>Already have an account? <a href="login.html">Login here</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Verify Email Popup -->
+    <div id="verifyPopup" class="popup-container">
+        <div class="popup-content">
+             <!-- Close button for the verification popup -->
+            <span class="close" onclick="closeVerifyPopup()">&times;</span>
+            <!-- Image for the verification popup -->
+            <img src="../Images/verify.png" alt="Logo" class="logo-image">
+            <!-- Title for the verification popup -->
+            <h2>Verification Code</h2>
+            <!-- Additional information about default verification code and SMTP -->
+            <p>Note: The default verification code is currently set to "<strong>123456</strong>" since the website is not currently using SMTP for email verification.</p>
+             <!-- Input field for entering the verification code -->
+            <div class="input-container">
+                <input type="text" id="verificationCode" placeholder="Enter the code" required>
+            </div>
+            <!-- Button to continue with the signup process after verification -->
+            <button onclick="continueSignup()">VERIFY</button>
+            <!-- Option to resend the verification code -->
+            <p>Didn't receive an email? <span class="resend-link" onclick="resendCode()">Resend</span></p>
+        </div>
+    </div>
+
+    <!-- The Success Popup -->
+    <div id="successPopup" class="popup-container">
+        <div class="popup-content">
+            <!-- Option to resend the verification code -->
+            <span class="close" onclick="closeSuccessPopup()">&times;</span>
+            <!-- Image for the success popup -->
+            <img src="../Images/verify.png" alt="Logo" class="logo-image">
+            <!-- Title for the success popup -->
+            <h2>Account Created</h2>
+            <!-- Confirmation message for successfully creating an account -->
+            <p>Your account has been successfully created!</p>
+            <!-- Button to close the success popup -->
+            <button onclick="closeSuccessPopup()">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript section for handling form submission and popups -->
+        <!-- JavaScript section for handling form submission and popups -->
+        <script>
+            // Function to handle the signup form submission
+            function handleSignupForm() {
+                if (validateForm()) {
+                    showVerifyPopup();
+                }
+            }
+
+            // Function to handle the verification popup and continue with signup
+            function showVerifyPopup() {
+                if (validateForm()) {
+                    var username = document.getElementById("username").value;
+
+                    // AJAX request to check if the username already exists
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "../COMPONENTS/check_username.php", true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            var response = xhr.responseText;
+
+                            if (response === "exists") {
+                                alert("Username already exists. Please choose another one.");
+                            } else {
+                                // Introduce a 1-second delay before showing the verification popup
+                                setTimeout(function () {
+                                    document.getElementById("verifyPopup").style.display = "block";
+                                }, 1000);
+                            }
+                        }
+                    };
+
+                    xhr.send("username=" + username);
+                }
+            }
+
+            // Function to close the verification popup
+            function closeVerifyPopup() {
+                document.getElementById("verifyPopup").style.display = "none";
+                document.getElementById("verificationCode").value = ""; 
+            }
+
+            // Function to continue with signup after verifying the code
+            function continueSignup() {
+                var verificationCode = document.getElementById("verificationCode").value;
+                if (verificationCode === "123456") {
+                    submitForm();
+                } else {
+                    displayVerificationError();
+                }
+            }
+
+            // Function to validate the signup form
+            function validateForm() {
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var contact = document.getElementById("contact").value;
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var agreeTerms = document.getElementById("agree");
+
+                if (
+                    name === "" ||
+                    email === "" ||
+                    contact === "" ||
+                    username === "" ||
+                    password === "" ||
+                    !agreeTerms.checked
+                ) {
+                    alert("Please fill in all the required fields and agree to the terms and conditions as well as to the privacy statement.");
+                    return false;
+                }
+
+                // Email validation
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+
+                // Contact number validation
+                if (isNaN(contact) || contact === "") {
+                    alert("Please enter a valid contact number.");
+                    return false;
+                }
+
+                // Password validation
+                var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+                if (!passwordRegex.test(password)) {
+                    alert(
+                        "A Password contains at least eight characters, including at least one number and includes both lower and uppercase letters and special characters."
+                    );
+                    return false;
+                }
+
+                return true;
+            }
+
+            // Function to submit the signup form
+            function submitForm() {
+                var form = document.forms[0];
+                var formData = new FormData(form);
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "../COMPONENTS/signup.php", true);
+
+                xhr.onload = function () {
+                    if (xhr.status === 200 && xhr.responseText === "success") {
+                        displayVerificationSuccess();
+                    } else {
+                        displayVerificationError();
+                    }
+                };
+
+                xhr.send(formData);
+            }
+
+            // Function to display success message after successful verification
+            function displayVerificationSuccess() {
+                alert("Email verified successfully!");
+                clearSignupForm();
+                closeVerifyPopup();
+                showSuccessPopup();
+            }
+
+            // Function to display the success popup
+            function showSuccessPopup() {
+                document.getElementById("successPopup").style.display = "block";
+            }
+
+            // Function to close the success popup
+            function closeSuccessPopup() {
+                document.getElementById("successPopup").style.display = "none";
+            }
+
+            // Function to display an error message for invalid verification code
+            function displayVerificationError() {
+                alert("Invalid verification code. Please try again.");
+            }
+
+            // Function to clear the signup form
+            function clearSignupForm() {
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("contact").value = "";
+                document.getElementById("username").value = "";
+                document.getElementById("password").value = "";
+                document.getElementById("agree").checked = false;
+            }
+        </script>
+</body>
+</html>

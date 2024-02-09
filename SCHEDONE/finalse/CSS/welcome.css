@@ -1,0 +1,883 @@
+/* Importing the 'Poppins' font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* CSS variable definitions for color and background */
+:root{
+    --main: orange;
+    --bg: #0B1218;
+    --bg-body: #131D28;
+}
+
+/* Global styles for all elements */
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove focus outline on input and button elements */
+input, button {
+    outline: none;
+}
+
+/* Hidden input for menu toggle */
+#menu-toggle {
+    display: none;
+}
+
+/* Handle sidebar menu display when menu toggle is checked */
+#menu-toggle:checked ~ .sidebar .brand h2 {
+    display: none;
+}
+
+/* Handle sidebar menu when menu toggle is checked (shrinking) */
+#menu-toggle:checked ~ .sidebar .side-img {
+    height: 50px;
+    width: 50px;
+}
+
+/* Hide user info when menu toggle is checked */
+#menu-toggle:checked ~ .sidebar .user {
+    display: none;
+}
+
+/* Hide the last child of anchor elements in the sidebar when menu toggle is checked */
+#menu-toggle:checked ~ .sidebar li a span:last-child {
+    display: none;
+}
+
+/* Shrink the sidebar when menu toggle is checked */
+#menu-toggle:checked ~ .sidebar {
+    width: 65px;
+}
+
+/* Adjust header position when menu toggle is checked */
+#menu-toggle:checked ~ .main-content header {
+    left: calc(65px + 1rem);
+}
+
+/* Adjust main content margin when menu toggle is checked */
+#menu-toggle:checked ~ .main-content {
+    margin-left: 65px;
+}
+
+/* Styles for the sidebar */
+.sidebar {
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background: var(--bg);
+    width: 280px;
+    overflow-y: auto;
+    transition: width 300ms;
+}
+
+/* Styles for the branding section within the sidebar */
+.brand {
+    padding: .5rem 1rem;
+    display: flex;
+    color: var(--main);
+    align-items: center;
+    height: 70px;
+}
+
+/* Styles for branding text */
+.brand span{
+    font-size: 1.8rem;
+    margin-right: .5rem;
+}
+
+/* Styles for user info in the sidebar */
+.side-user {
+    margin: 1.8rem 0rem;
+}
+
+/* Styles for the user image in the sidebar */
+.side-img {
+    height: 120px;
+    width: 120px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+    border: 2px solid orange;
+    border-radius: 50%;
+}
+
+.profile-image-placeholder{
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+    border: 2px solid orange;
+    border-radius: 50%;
+}
+
+/* Styles for user text in the sidebar */
+.user {
+    text-align: center;
+    color: #fff;
+    margin-top: .5rem;
+}
+
+/* Styles for user small text */
+.user small{
+    display: inline-block;
+    color: var(--main);
+}
+
+/* Styles for sidebar menu */
+.sidemenu{
+    padding: .5rem;
+}
+
+/* Styles for list items in the sidebar menu */
+.sidemenu li{
+    margin-bottom: .8rem;
+}
+
+/* Styles for anchor elements in the sidebar menu */
+.sidemenu a{
+    color: #fff;
+    font-size: .85rem;
+    display: flex; 
+    align-items: center;
+}
+
+/* Styles for the first child of anchor elements in the sidebar menu */
+.sidemenu a span:first-child {
+    font-size: 1.3rem;
+    padding: 0rem .6rem;
+}
+
+/* Styles for active anchor elements in the sidebar menu */
+.sidemenu a.active {
+    background: var(--main);
+    color: #fff;
+    border-radius: 5px;
+    height: 45px;
+}
+
+/* Styles for the main content area */
+.main-content {
+    margin-left: 280px;
+    min-height: 100vh;
+    background: var(--bg-body);
+    padding: .5rem 1rem;
+    transition: margin-left 300ms;
+}
+
+/* Styles for the header section */
+header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    padding: 0rem 1rem;
+    position: absolute;
+    left: calc(280px + 1rem);
+    right: 1rem;
+    top: .5rem;
+    border-radius: 3px;
+    transition: left 300ms;
+}
+
+/* Styles for the menu toggle button */
+.menu-toggler {
+    height: 45px;
+    width: 45px;
+    background: var(--main);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+}
+
+/* Styles for the search bar */
+.search {
+    display: flex;
+    width: 300px;
+    border-radius: 20px;
+    overflow-x: hidden;
+    border: 3px solid #3e454d;
+    align-items: center;
+}
+
+/* Styles for search icon and input */
+.search span {
+    font-size: 1.3rem;
+    color: #fff;
+    padding-left: 1rem;
+}
+
+/* Styles for the search input */
+.search input {
+    flex: 1;
+    height: 42px;
+    border: none;
+    background: transparent;
+    padding: 1rem;
+    color: #fff;
+}
+
+/* Styles for header icons */
+.head-icons span {
+    font-size: 2rem;
+    margin-left: 1rem;
+    color: #fff;
+}
+
+/* Hover effect for all icons in .head-icons */
+.head-icons span:hover {
+    color: #3498db; 
+    cursor: pointer; 
+}
+
+/* Styles for the main content area */
+main {
+    margin-top: calc(70px + .5rem);
+    padding: 1rem 0rem;
+}
+
+/* Styles for a grid of cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+}
+
+/* Styles for individual cards */
+.card {
+    background: var(--bg);
+    padding: 2rem 1rem;
+    border-radius: 3px;
+}
+
+/* Styles for icons within cards */
+.card-icon {
+    text-align: center;
+    display: grid;
+    place-items: center;
+}
+
+/* Styles for icons within cards */
+.card-icon span {
+    height: 55px;
+    width: 55px;
+    color: #fff;
+    font-size: 2rem;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+}
+
+/* Styles for "follow" span within cards */
+.follow span {
+    color: #0072f2;
+    background: #e5f3fe;
+}
+
+/* Styles for "likes" span within cards */
+.likes span {
+    color: #f42a26;
+    background: #fde9ea;
+}
+
+/* Styles for "comment" span within cards */
+.comment span {
+    color: #ffbc01;
+    background: #fff8e5;
+}
+
+/* Styles for first card information block*/
+.card-info{
+    text-align: center;
+    margin-top: .6rem;
+}
+
+/* Styles for the second card information block */
+.card-info2{
+    text-align: center;
+    margin-top: .6rem;
+}
+
+/* Styles for card titles in the first card information block */
+.card-info h2{
+    font-size: 3rem;
+    color: #efefef;
+}
+
+/* Styles for card titles in the second card information block */
+.card-info2 h2{
+    top: 7px;
+    position: relative;
+    font-size: 2.5rem;
+    color: #efefef;
+}
+
+/* Styles for additional information in the second card information block */
+.card-info2 small {
+    display: inline-block;
+    position: relative;
+    top: 12px;
+    color: var(--main);
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+/* Styles for subtitles in the first card information block */
+.card-info h3{
+    position: relative;
+    top: 20px;
+    font-size: 1rem;
+    color: #e5f3fe;
+}
+
+/* Styles for small text within cards */
+.card-info small {
+    display: inline-block;
+    color: var(--main);
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+/* Styles for images within cards */
+.card-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.3rem;
+    position: relative;
+    top: 15px;
+}
+
+/* Styles for image divs within cards */
+.card-images div {
+    height: 45px;
+    width: 45px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: 4px solid #efefef;
+    position: relative;
+    margin-left: -15px;
+}
+
+/* Styles for the first image div within cards */
+.card-images div:first-child {
+    margin-left: 0;
+}
+
+/* Styles for the grid of charts */
+.chart-grid {
+    display: grid;
+    grid-template-columns: 64% auto;
+    margin-top: 3rem;
+    grid-gap: 2rem;
+}
+
+/* Styles for chart sections */
+.chart-follow, .chart-sales {
+    background: var(--bg);
+    padding: 1rem;
+    border-radius: 3px;
+}
+
+/* Styles for chart headers */
+.chart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #efefef;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #222;
+    margin-bottom: 1rem;
+}
+
+/* Styles for the close mobile menu button */
+.close-mobile-menu{
+    position: fixed;
+    right: 100%;
+    top: 0;
+    bottom: 0;
+    display: block;
+    height: 100%;
+    width: calc(100% - 280px);
+    background: transparent;
+    z-index: 100;
+    transition: right 300ms;
+}
+
+/* Overlay styles for the modal */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+}
+
+/* Styles for the modal container */
+#modal {
+    display: none;
+    position: fixed;
+    width: 500px;
+    max-height: 500px;
+    padding: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #FFD000;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto; 
+    box-sizing: border-box;
+    z-index: 1000;
+    display: none;
+}
+
+/* Styles for the content within the modal */
+#modal-content {
+    text-align: center;
+}
+
+/* Set styling for h2 elements inside modal-content */
+#modal-content h2 {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(82, 46, 1);
+    text-transform: uppercase;
+}
+
+img {
+    position: absolute;
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    max-width: 100px; 
+    max-height: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    }
+
+/* Reset styling for ul elements inside modal-content */
+#modal-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Set margin for li elements inside modal-content */
+#modal-content li {
+    margin-bottom: 10px;
+}
+
+/* Style button elements inside modal-content */
+#modal-content button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(82, 46, 1);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Change button style on hover */
+#modal-content button:hover {
+    background-color: #FFD000;
+    color: rgb(82, 46, 1);
+    font-weight: bold;
+}
+
+/* Notification List Styles */
+#modal-notificationList {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 0;
+}
+
+/* Style list items inside the modal-notificationList */
+#modal-notificationList li {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+/* Style h4 elements inside list items of modal-notificationList */
+#modal-notificationList li h4 {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style paragraphs inside list items of modal-notificationList */
+#modal-notificationList li p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Style the close-modal button */
+#close-modal {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Notification list styles */
+#notificationList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Style for notification items */
+.notification-item {
+    background-color: #f9f9f9;
+    border: 1px solid #FFD000;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+/* Change style on hover for notification items */
+.notification-item:hover {
+    background-color: #e9e9e9;
+}
+
+/* Style h4 elements inside notification items */
+.notification-item h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #131D28;
+}
+
+/* Style paragraphs inside notification items */
+.notification-item p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Style the taskDeadlineList */
+#taskDeadlineList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Style for task deadline items */
+.taskDeadline-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+/* Change style on hover for task deadline items */
+.taskDeadline-item:hover {
+    background-color: #e9e9e9;
+}
+
+/* Style h4 elements inside task deadline items */
+.taskDeadline-item h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Style paragraphs inside task deadline items */
+.taskDeadline-item p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Style for progress bar container */
+.progress-bar {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    height: 15px;
+    margin-top: 10px;
+    position: relative;
+    top: 10px;
+}
+
+/* Style for progress bar */
+.progress {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Styling for the logout popup container */
+#logoutPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+}
+
+/* Styling for the logout popup container content */
+#logoutPopup .popup-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 2px solid #FFD000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styling for the logo image */
+.logo-image {
+    position: absolute;
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    max-width: 100px; 
+    max-height: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the heading element within logout popup content */
+#logoutPopup .popup-content h2 {
+    color: rgb(82, 46, 1);
+    font-size: 20px;
+    margin-top: 90px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Styling for paragraphs within logout popup content */
+#logoutPopup .popup-content p {
+    margin-top: 20px;
+    font-size: 16px;
+    color: rgb(82, 46, 1);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Styling for buttons within logout popup content */
+#logoutPopup .popup-content .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Styling for buttons within logout popup content */
+#logoutPopup .popup-content button {
+    background-color: #FFD000;
+    color: rgb(82, 46, 1);
+    font-weight: bold;
+    width: 60%;
+    padding: 12px;
+    border: 2px solid #FFD000;
+    border-radius: 10px; 
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(205, 94, 94, 0.2), 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+/* Styling for buttons within logout popup content */
+#logoutPopup .popup-content .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* Add margin to create space between buttons */
+#logoutPopup .popup-content button:first-child {
+    margin-right: 10px;
+}
+
+#logoutPopup .popup-content button:last-child {
+    margin-left: 10px;
+}
+
+/* Styling for input field within logout popup content */
+#logoutPopup .popup-content input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 2px solid #FFD000;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #000;
+}
+
+/* Styling for the close button in the logout popup content */
+#logoutPopup .popup-content .close {
+    color: #aaa;
+    margin-left: auto;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Styling for the close button in the logout popup content when hovered over */
+#logoutPopup .popup-content .close:hover {
+    color: rgb(82, 46, 1);
+}
+
+/* Media queries for various screen widths */
+@media only screen and (max-width: 1124px) {
+    #menu-toggle ~ .sidebar .brand h2 {
+        display: none;
+    }
+    
+    #menu-toggle ~ .sidebar .side-img {
+        height: 50px;
+        width: 50px;
+    }
+    
+    #menu-toggle ~ .sidebar .user {
+        display: none;
+    }
+    
+    #menu-toggle ~ .sidebar li a span:last-child {
+        display: none;
+    }
+    
+    #menu-toggle ~ .sidebar {
+        width: 65px;
+    }
+    
+    #menu-toggle ~ .main-content header {
+        left: calc(65px + 1rem);
+    }
+    
+    #menu-toggle ~ .main-content {
+        margin-left: 65px;
+    }
+
+    #menu-toggle:checked ~ .sidebar .brand h2 {
+        display: block;
+    }
+    
+    #menu-toggle:checked ~ .sidebar .side-img {
+        height: 120px;
+        width: 120px;
+    }
+    
+    #menu-toggle:checked ~ .sidebar .user {
+        display: block;
+    }
+    
+    #menu-toggle:checked ~ .sidebar li a span:last-child {
+        display: inline-block;
+    }
+    
+    #menu-toggle:checked ~ .sidebar {
+        width: 280px;
+        z-index: 100;
+    }
+
+    #menu-toggle:checked ~ .close-mobile-menu {
+       right: 0;
+    }
+}
+
+@media only screen and (max-width: 845px) {
+    .cards {
+        grid-template-columns: repeat(2, lfr);
+    }
+
+    .chart-grid {
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .search {
+        display: none;
+    }
+
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 412px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+    .head-icons{
+        display: none;
+    }
+}
+

@@ -1,0 +1,878 @@
+/* Import the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Define root-level CSS variables for color themes */
+:root{
+    --main: orange;
+    --bg: #0B1218;
+    --bg-body: #131D28;
+}
+
+/* Reset default styles and set base styles for all elements */
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Reset outline for input and button elements */
+input, button {
+    outline: none;
+}
+
+/* Styling for the menu-toggle input checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* Handle menu toggle styles for responsive design */
+/* When the menu-toggle is checked, update sidebar and header styles */
+#menu-toggle:checked ~ .sidebar .brand h2 {
+    display: none;
+}
+
+#menu-toggle:checked ~ .sidebar .side-img {
+    height: 50px;
+    width: 50px;
+}
+
+#menu-toggle:checked ~ .sidebar .user {
+    display: none;
+}
+
+#menu-toggle:checked ~ .sidebar li a span:last-child {
+    display: none;
+}
+
+#menu-toggle:checked ~ .sidebar {
+    width: 65px;
+}
+
+#menu-toggle:checked ~ .main-content header {
+    left: calc(65px + 1rem);
+}
+
+#menu-toggle:checked ~ .main-content {
+    margin-left: 65px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background: var(--bg);
+    width: 280px;
+    overflow-y: auto;
+    transition: width 300ms;
+}
+
+/* Brand section in the sidebar */
+.brand {
+    padding: .5rem 1rem;
+    display: flex;
+    color: var(--main);
+    align-items: center;
+    height: 70px;
+}
+
+/* Brand icon and text styling */
+.brand span{
+    font-size: 1.8rem;
+    margin-right: .5rem;
+}
+
+/* User section in the sidebar */
+.side-user {
+    margin: 1.8rem 0rem;
+}
+
+/* User image styling */
+.side-img {
+    height: 120px;
+    width: 120px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+    border: 1px solid #3e454d;
+    border-radius: 50%;
+}
+
+.profile-image-placeholder{
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+    border: 2px solid orange;
+    border-radius: 50%;
+}
+
+/* User information styling */
+.user {
+    text-align: center;
+    color: #fff;
+    margin-top: .5rem;
+}
+
+/* Style for small text within the user element */
+.user small{
+    display: inline-block;
+    color: var(--main);
+}
+
+/* Sidebar menu container */
+.sidemenu{
+    padding: .5rem;
+}
+
+/* Sidebar menu items */
+.sidemenu li{
+    margin-bottom: .8rem;
+}
+
+/* Sidebar menu links */
+.sidemenu a{
+    color: #fff;
+    font-size: .85rem;
+    display: flex; 
+    align-items: center;
+}
+
+/* Icons in sidebar menu */
+.sidemenu a span:first-child {
+    font-size: 1.3rem;
+    padding: 0rem .6rem;
+}
+
+/* Styling for active menu item */
+.sidemenu a.active {
+    background: var(--main);
+    color: #fff;
+    border-radius: 5px;
+    height: 45px;
+}
+
+/* Main content area */
+.main-content {
+    margin-left: 280px;
+    min-height: 100vh;
+    background: var(--bg-body);
+    padding: .5rem 1rem;
+    transition: margin-left 300ms;
+}
+
+/* Header styling */
+header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    padding: 0rem 1rem;
+    position: fixed;
+    left: calc(280px + 1rem);
+    right: 1rem;
+    top: .5rem;
+    border-radius: 3px;
+    transition: left 300ms;
+    z-index: 1000; 
+}
+
+/* Menu toggler button styling */
+.menu-toggler {
+    height: 45px;
+    width: 45px;
+    background: var(--main);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+}
+
+/* Icons in the header */
+.head-icons span {
+    font-size: 2rem;
+    margin-left: 1rem;
+    color: #fff;
+}
+
+/* Hover effect for all icons in .head-icons */
+.head-icons span:hover {
+    color: #3498db; 
+    cursor: pointer; 
+}
+
+/* Additional styling for headings */
+.heading{
+    text-align: center;
+    font-size: 4.5rem;
+    margin-top: 50px;
+}
+
+/* Styling for elements with a 'members-color' class */
+.members-color{
+    color: #fff;
+}
+
+/* Styling for the 'members' section */
+.members{
+    background: var(--bg-body);
+}
+
+/* Styling for 'members' section heading */
+.members h1{
+    margin-bottom: 2rem; 
+    color: var(--main); 
+}
+
+/* Ensure space between member images and header icons */
+.members-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; 
+    margin-bottom: 3rem;
+}
+
+/* Styling for individual 'members-box' elements */
+.members-container .members-box {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--bg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Styling for images in 'members-box' elements */
+.members-box img {
+    width: 250px; 
+    height: 250px; 
+    transition: .5s ease;
+}
+
+/* Hover effect for 'members-box' images */
+.members-box:hover img {
+    transform: scale(1.1);
+}
+
+/* Overlay layer for 'members-box' elements */
+.members-box .members-layer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, .1), var(--main));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: .5s ease;
+}
+
+/* Hover effect for 'members-layer' elements */
+.members-box:hover .members-layer{
+    transform: translateY(0);
+}
+
+/* Styling for 'members-layer' text */
+.members-layer h4{
+    font-size: 2rem;
+    color: #fff;
+}
+
+.members-layer p{
+    font-size: 1.6rem;
+    margin: .3rem 0 1rem;
+}
+
+/* Styling for links within 'members-layer' */
+.members-layer a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+/* Styling for icons within 'members-layer' links */
+.members-layer a i{
+    font-size: 2rem;
+    color: var(--bg);
+}
+
+/* Read-more button styling */
+.read-more{
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    margin-top: 60px;
+    margin-left: 450px;
+    background: var(--main);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main);
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: .1rem;
+    font-weight: 600;
+    transition: .5s ease;
+}
+
+/* Hover effect for read-more button */
+.read-more:hover{
+    box-shadow: none;
+}
+
+/* Styling for the close-mobile-menu element */
+.close-mobile-menu{
+    position: fixed;
+    right: 100%;
+    top: 0;
+    bottom: 0;
+    display: block;
+    height: 100%;
+    width: calc(100% - 280px);
+    background: transparent;
+    z-index: 100;
+    transition: right 300ms;
+}
+
+/* Media queries for responsive design */
+@media only screen and (max-width: 1124px) {
+    #menu-toggle ~ .sidebar .brand h2 {
+        display: none;
+    }
+    
+    #menu-toggle ~ .sidebar .side-img {
+        height: 50px;
+        width: 50px;
+    }
+    
+    #menu-toggle ~ .sidebar .user {
+        display: none;
+    }
+    
+    #menu-toggle ~ .sidebar li a span:last-child {
+        display: none;
+    }
+    
+    #menu-toggle ~ .sidebar {
+        width: 65px;
+    }
+    
+    #menu-toggle ~ .main-content header {
+        left: calc(65px + 1rem);
+    }
+    
+    #menu-toggle ~ .main-content {
+        margin-left: 65px;
+    }
+
+    #menu-toggle:checked ~ .sidebar .brand h2 {
+        display: block;
+    }
+    
+    #menu-toggle:checked ~ .sidebar .side-img {
+        height: 120px;
+        width: 120px;
+    }
+    
+    #menu-toggle:checked ~ .sidebar .user {
+        display: block;
+    }
+    
+    #menu-toggle:checked ~ .sidebar li a span:last-child {
+        display: inline-block;
+    }
+    
+    #menu-toggle:checked ~ .sidebar {
+        width: 280px;
+        z-index: 100;
+    }
+
+    #menu-toggle:checked ~ .close-mobile-menu {
+       right: 0;
+    }
+}
+
+@media only screen and (max-width: 845px) {
+    .cards {
+        grid-template-columns: repeat(2, lfr);
+    }
+
+    .chart-grid {
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .search {
+        display: none;
+    }
+
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 412px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .cards{
+        grid-template-columns: 100%;
+    }
+    .head-icons{
+        display: none;
+    }
+}
+
+/* Base Popup Styles */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 2px solid #FFD000;
+    padding: 20px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Styling for the image inside the popup container */
+.popup-container img {
+    border: 3px solid rgb(82, 46, 1);
+    border-radius: 50%;
+    width: 200px; 
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+/* Button styles */
+button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(82, 46, 1);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover styles */
+button:hover {
+    background-color: #FFD000;
+    color: rgb(82, 46, 1);
+    font-weight: bold;
+}
+
+/* Styling for the main title in the popup */
+.popup-container h2.popupTitle {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(82, 46, 1);
+}
+
+/* Styling for a specific title within the popup */
+.popup-container h4#popupTitle.popupTitle {
+    margin-bottom: 10px;
+    font-size: 20px; 
+    color: rgb(82, 46, 1);
+    text-align: center; 
+}
+
+/* Styling for the main description in the popup */
+.popup-container p#popupDescription.popupDescription {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #842424; 
+    text-align: justify; 
+}
+
+/* Styling for paragraphs within the popup description */
+.popup-container .popupDescription p {
+    margin-bottom: 12px;
+    font-size: 18px; 
+    color: rgb(82, 46, 1);
+    text-align: center;
+}
+
+/* Styling for a different type of paragraph within the popup description */
+.popup-container .popupDescription p1 {
+    margin-bottom: 12px; 
+    font-size: 16px; 
+    color: #000000; 
+    text-align: justify;
+}
+
+/* Styling for the close button */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #555;
+}
+
+/* Overlay Styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    display: none; 
+}
+
+/* Custom Scrollbar */
+.popup-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Styling for scrollbar thumb */
+.popup-container::-webkit-scrollbar-thumb {
+    background-color: #FFD000;
+    border-radius: 5px;
+}
+
+/* Styling for a section separator */
+.section-separator {
+    border-top: 2px solid #ccc; 
+    margin: 20px 0; 
+}
+
+/* Mission, Vision, and Goals Section Styles */
+.mission-vision-goals {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Styling for a heading */
+.heading {
+    font-size: 50px;
+    color: #fff;
+}
+
+/* Styling for a specific type of heading */
+.heading1 {
+    color: orange;
+}
+
+/* Styling for another type of heading */
+.heading2 {
+    color: #fff;
+}
+
+/* Mission Section Styles */
+.mission-section {
+    background-color: #f9f9f9;
+    border: 2px solid #FFD000; 
+    padding: 40px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styling for the heading within the mission section */
+.mission-section h2 {
+    color: rgb(82, 46, 1);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styling for paragraphs within the mission section */
+.mission-section p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify; /* Add text justification */
+}
+
+/* Vision Section Styles */
+.vision-section {
+    background-color: #f9f9f9;
+    border: 2px solid #FFD000; 
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styling for the heading within the vision section */
+.vision-section h2 {
+    color: rgb(82, 46, 1);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styling for paragraphs within the vision section */
+.vision-section p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify; /* Add text justification */
+}
+
+/* Goals Section Styles */
+.goals-section {
+    background-color: #f9f9f9;
+    border: 2px solid #FFD000; 
+    padding: 40px;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styling for the heading within the goals section */
+.goals-section h2 {
+    color: rgb(82, 46, 1);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styling for paragraphs within the goals section */
+.goals-section p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify; 
+}
+
+/* Styling for an unordered list within the goals section */
+.goals-section ul {
+    list-style-type: disc;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Styling for list items within the goals section */
+.goals-section li {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    text-align: justify;
+    list-style-type: disc; 
+}
+
+/* Margin for space above and below the "Connect with Us" section */
+.connect-with-us {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
+
+/* Container for the connect items, styled as a flexbox */
+.connect-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px; 
+}
+
+/* Styling for each connect box */
+.connect-box {
+    text-align: center;
+    padding: 15px;
+    background-color: white;
+    border: 2px solid #FFD000; 
+    border-radius: 8px;
+    width: 200px;
+    height: 125px;
+    transition: box-shadow 0.3s ease;
+
+}
+
+/* Styling for the connect icon within the connect box */
+.connect-icon {
+    font-size: 30px; 
+    margin-bottom: 10px;
+    color: rgb(82, 46, 1);;
+}
+
+/* Styling for the text within the connect box */
+.connect-text a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.connect-text p {
+    margin: 0;
+}
+
+/* Styling for the logout popup container */
+#logoutPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+}
+
+/* Styling for the logout popup container content */
+#logoutPopup .popup-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 2px solid #FFD000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styling for the logo image */
+#logoutPopup .popup-content .logo-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100px;
+    max-height: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the heading element within logout popup content */
+#logoutPopup .popup-content h2 {
+    color: rgb(82, 46, 1);
+    font-size: 20px;
+    margin-top: 90px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Styling for paragraphs within logout popup content */
+#logoutPopup .popup-content p {
+    margin-top: 20px;
+    font-size: 16px;
+    color: rgb(82, 46, 1);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Styling for buttons within logout popup content */
+#logoutPopup .popup-content .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Styling for buttons within logout popup content */
+#logoutPopup .popup-content button {
+    background-color: #FFD000;
+    color: rgb(82, 46, 1);
+    font-weight: bold;
+    width: 60%;
+    padding: 12px;
+    border: 2px solid #FFD000;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(205, 94, 94, 0.2), 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+/* Styling for buttons within logout popup content */
+#logoutPopup .popup-content .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* Add margin to create space between buttons */
+#logoutPopup .popup-content button:first-child {
+    margin-right: 10px;
+}
+
+#logoutPopup .popup-content button:last-child {
+    margin-left: 10px;
+}
+
+/* Styling for the close button in the logout popup content */
+#logoutPopup .popup-content .close {
+    color: #aaa;
+    margin-left: auto;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Styling for the close button in the logout popup content when hovered over */
+#logoutPopup .popup-content .close:hover {
+    color: rgb(82, 46, 1);
+}

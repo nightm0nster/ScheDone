@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Set character set and viewport for responsiveness -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the webpage -->
+    <title>ScheDone - Login Page</title>
+    <!-- Add Favicon -->
+    <link rel="icon" href="../Images/1.png" type="image/png">
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" type="text/css" href="../CSS/login.css">
+    <!-- Add jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+  <!-- Back to Home button -->
+  <div class="back-button">
+    <!-- Link to go back to the home page -->
+    <a href="../index.html">&#9666; BACK TO HOME</a>
+  </div>
+
+  <div class="container">
+    <!-- Content for the left column -->
+    <div class="left-column">
+      <img src="../Images/task.png" alt="Task">
+    </div>
+
+    <!-- Content for the right column -->
+    <div class="right-column">
+      <!-- Title for the login section -->
+      <h1>LOGIN</h1>
+      <!-- Login form with user input fields-->
+      <form method="post" action="../COMPONENTS/login.php" id="loginForm" onsubmit="return validateLoginForm()">
+
+        <!-- Input field for username -->
+        <div class="form-group">
+          <input type="text" id="username" name="username" placeholder="Username" required>
+        </div>
+
+        <!-- Input field for password -->
+        <div class="form-group">
+          <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+
+        <div class="remember-me">
+          <input type="checkbox" id="rem" name="remember">
+          <label for="rem">Remember me</label>
+        </div>
+
+        <!-- Checkbox for "Remember me" option -->
+        <div class="form-group">
+          <input type="submit" value="Login">
+        </div>
+      </form>
+
+      <!-- Submit button for the login form -->
+      <div class="forgot-password-link">
+        <!-- Link to trigger the forgot password popup -->
+        <a href="#" onclick="showForgotPasswordPopup()">Forgot Password?</a>
+      </div>
+
+      <!-- Popup for forgot password functionality -->
+      <div id="forgotPasswordPopup" class="popup-container">
+        <div class="popup-content">
+          <!-- Close button for the popup -->
+          <span class="close" onclick="closeForgotPasswordPopup()">&times;</span>
+          <img src="../Images/lock.png" alt="Logo" class="logo-image">
+          <!-- Title for the forgot password popup -->
+          <h2>Forgot Password?</h2>
+          <!-- Instructions for the user in the forgot password popup -->
+          <p>Enter your email address to receive a password reset link.</p>
+          <!-- Input field for email address in the popup -->
+          <div class="input-container">
+            <input type="email" id="forgotPasswordEmail" placeholder="Enter your email" required>
+          </div>
+          <!-- Button to send the reset link -->
+          <button onclick="sendResetLink()">SEND RESET LINK</button>
+        </div>
+      </div>
+
+      <!-- Container for reset link status -->
+      <div id="resetLinkStatusContainer" class="popup-container">
+        <div class="popup-content">
+          <!-- Close button for the container -->
+          <span class="close" onclick="closeResetLinkStatusContainer()">&times;</span>
+          <img src="../Images/lock.png" alt="Status Image" class="status-image">
+          <h2>Reset Link Status</h2>
+          <!-- Message to display the status of the reset link -->
+          <p id="resetLinkStatusMessage"></p>
+        </div>
+      </div>
+
+      <!-- Script section for handling JavaScript functionality -->
+      <script>
+        // Function to display the forgot password popup
+        function showForgotPasswordPopup() {
+          $("#forgotPasswordPopup").show();
+        }
+
+        // Function to close the forgot password popup and reset email input
+        function closeForgotPasswordPopup() {
+          $("#forgotPasswordPopup").hide();
+          $("#forgotPasswordEmail").val("");
+        }
+
+        // Function to send a reset link
+        function sendResetLink() {
+          var email = $("#forgotPasswordEmail").val();
+          // Check if the email is valid
+          if (email.trim() === "" || !isValidEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+          }
+          console.log("Sending reset link to: " + email);
+          showResetLinkStatusContainer("Reset link sent successfully to <u>" + email + "</u>");
+          $("#forgotPasswordEmail").val("");
+          closeForgotPasswordPopup();
+        }
+
+        // Function to validate email using a regular expression
+        function isValidEmail(email) {
+          var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          return emailRegex.test(email);
+        }
+
+        // Function to display reset link status container with a message
+        function showResetLinkStatusContainer(message) {
+          $("#resetLinkLoading").show();
+          setTimeout(function () {
+            $("#resetLinkLoading").hide();
+            $("#resetLinkStatusMessage").html(message);
+            $("#resetLinkStatusContainer").show();
+          }, 1000);
+        }
+
+        // Function to close the reset link status container
+        function closeResetLinkStatusContainer() {
+          $("#resetLinkStatusContainer").hide();
+        }
+
+        // Document ready function for jQuery
+        $(document).ready(function () {
+          // Submit function for the login form using AJAX
+          $("#loginForm").submit(function (e) {
+            e.preventDefault();
+
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var checkbox = $("#rem").prop("checked");
+
+            // Check if both username and password are provided
+            if (username === "" || password === "") {
+              alert("Please fill in all fields.");
+              return;
+            }
+
+            // AJAX request for user login
+            $.ajax({
+              type: "POST",
+              url: "../COMPONENTS/login.php",
+              data: $(this).serialize(),
+              success: function (loginResponse) {
+                // Check if the login is successful
+                if (loginResponse === "success") {
+                  // Fetch the user's name from the server and display it
+                  $.ajax({
+                    type: "GET",
+                    url: "../COMPONENTS/get_username.php",
+                    success: function (nameResponse) {
+                      $("#userName").text(nameResponse);
+                      window.location.href = "../HTML/welcome.php";
+                    },
+                    error: function () {
+                      $("#userName").text("Unknown User");
+                      window.location.href = "../HTML/welcome.php";
+                    }
+                  });
+                } else {
+                  alert("Invalid username or password");
+                }
+              }
+            });
+          });
+        });
+      </script>
+
+      <!-- Signup link for users who don't have an account -->
+      <div class="signup-link">
+        <!-- Link to the signup page for new users -->
+        <p>Don't have an account? <a href="signup.html">Sign up here</a>.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

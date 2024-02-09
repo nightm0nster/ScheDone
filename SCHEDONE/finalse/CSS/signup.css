@@ -1,0 +1,296 @@
+/* Set the font family, background image, and basic styling for the body */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-image: url("../Images/bg1.jpeg");
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  background-color: orange;
+  color: rgb(82, 46, 1);
+}
+
+/* Styling for back to home button */
+.back-button {
+  position: absolute;
+  top: 30px; 
+  left: 30px; 
+  z-index: 2;
+}
+
+/* Styling for the link within the back button */
+.back-button a {
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* Styling for the link when hovered over */
+.back-button a:hover {
+  text-decoration: underline;
+}
+
+/* Styling for the container element */
+.container {
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 5px solid #ccc;
+  border-radius: 4px;
+  background-color: orange;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+}
+
+/* Styling for the left column */
+.left-column {
+  flex: 1;
+  box-sizing: border-box;
+}
+
+/* Styling for the image within the left column */
+.left-column img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Styling for the right column */
+.right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+/* Styling for the heading element */
+.container h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Styling for form groups */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for text, name, email, contact, username, and password input elements. */
+input[type="text"],
+input[type="name"],
+input[type="email"],
+input[type="contact"],
+input[type="username"],
+input[type="password"]{
+  width: 100%;
+  min-width: 250px; 
+  padding: 15px;
+  border: 2px solid rgb(82, 46, 1); 
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Styling for the container of the checkbox and its label */
+.agreeTerms {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: rgb(82, 46, 1);
+  font-size: 14px;
+  margin-top: -10px;
+}
+
+/* Styling for the checkbox input within the container */
+.agreeTerms input[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+  height: 18px;
+  width: 18px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgb(82, 46, 1);
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Styling for the checked state of the checkbox */
+.agreeTerms input[type="checkbox"]:checked {
+  background-color: rgb(82, 46, 1);
+}
+
+/* Styling for the checkmark icon when the checkbox is checked */
+.agreeTerms input[type="checkbox"]:checked::before {
+  content: "\2713"; 
+  font-size: 14px;
+  font-weight: bold;
+  color: white; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Style for the submit button. */
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: rgb(82, 46, 1);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+input[type="submit"]:hover {
+  background-color: rgb(102, 66, 21); 
+}
+
+/* Style for paragraphs. */
+p {
+  margin: 0;
+}
+
+/* Style for links. */
+a {
+  color: rgb(82, 46, 1); 
+  text-decoration: none;
+}
+
+/* Style for links on hover. */
+a:hover {
+  text-decoration: underline;
+}
+
+/* Style for popup container */
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+}
+
+/* Styling for the close button in the popup content */
+.popup-content .close {
+  color: #333;
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Styling for the close button in the popup content when hovered over */
+.popup-content .close:hover {
+  color: #FFD000;
+}
+
+/* Style for popup container content */
+.popup-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 2px solid #FFD000;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styling for logo image */
+.logo-image {
+  position: absolute;
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  max-width: 100px; 
+  max-height: 100px;
+  margin-bottom: 20px;
+}
+
+/* Styling for heading within popup content*/
+.popup-content h2 {
+  color: rgb(82, 46, 1); 
+  font-size: 20px; 
+  margin-top: 30px;
+}
+
+/* Styling for paragraphs (p) within the popup content */
+.popup-content p {
+  margin-bottom: 15px;
+  color: rgb(82, 46, 1); 
+}
+
+/* Styling for button within popup content */
+.popup-content button {
+  background-color: #FFD000;
+  color: rgb(82, 46, 1);
+  font-weight: bold;
+  width: 50%; 
+  padding: 12px; 
+  border: 2px solid #FFD000;
+  border-radius: 50px; 
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.2); 
+  margin-bottom: 10px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease; 
+}
+
+/* Hover effect for button within popup content */
+.popup-content button:hover {
+  background-color: rgb(255, 165, 0); 
+  color: rgb(82, 46, 1);
+}
+
+/* Styling for input field within popup content */
+.popup-content input#verificationCode {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 2px solid #FFD000;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #000;
+}
+
+/* Styling for the close button */
+.close {
+  color: #aaa;
+  margin-left: auto;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Styling for the close button when hovered over or focused */
+.close:hover,
+.close:focus {
+  color: black;
+}
+
+/* Styling for the resend link */
+.resend-link {
+  cursor: pointer;
+  color: rgb(82, 46, 1);
+  text-decoration: underline;
+}

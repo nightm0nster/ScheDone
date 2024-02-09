@@ -1,0 +1,80 @@
+/* Apply 'Quicksand' font styles to the entire body, set text alignment to justify, and reset margin and padding */
+body {
+    font-family: 'Quicksand', sans-serif;
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    background-color: #131D28;
+}
+
+/* Styling for the header element */
+header {
+    background-color: #0B1218;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Styling for the main heading (h1) */
+h1 {
+    margin: 0;
+    font-size: 3em;
+    color: #ffffff;
+    text-shadow: 0 0 10px #0074cc, 0 0 20px #0074cc, 0 0 30px #0074cc;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+    from {
+        text-shadow: 0 0 10px #0074cc, 0 0 20px #0074cc, 0 0 30px #0074cc;
+    }
+    to {
+        text-shadow: 0 0 20px #0074cc, 0 0 30px #0074cc, 0 0 40px #0074cc;
+    }
+}
+
+/* Styling for the main content area */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: linear-gradient(to bottom right, #fff, #f2f2f2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+/* Styling for paragraphs */
+p {
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for images with the class 'creative-img' */
+.creative-img {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #131D28;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Styling for call-to-action buttons with the class 'cta-button' */
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.4em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(to right, #27ae60, #2ecc71);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+/* Hover state for call-to-action buttons */
+.cta-button:hover {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+    transform: scale(1.1);
+}
